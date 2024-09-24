@@ -1,0 +1,10 @@
+.parent{
+    height: 10px;
+}
+.child{
+
+}
+.child img{
+    height: 10%;
+    width: 20%;
+}
