@@ -8,7 +8,9 @@ const Card = () => {
         <img src={sam2} alt="Sample" /> {/* Use <img> tag and add alt attribute for accessibility */}
       </div>
       <div>
-        Name
+        <h1>Name</h1>
+        <h1>Rate</h1>
+        
       </div>
     </div>
   );
