@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
+import React, { createContext, useState } from 'react'
 import Card from './Card'
-
 const Cards = () => {
-    const [data,setData]=useState(0)
+    const [data,setData]=useState(1)
+    const [datas,setDatas]=useState([
+        {
+            id:1,
+            name:"Jinzo",
+            Rating:4
+    },{
+        id:2,
+        name:"vanavil",
+        Rating:3
+    }])
     return (
-    <div>
+    <div>   
         <h2>Multiple Cards</h2>
         {data?
         (
-            <Card></Card>
+            <Card props={datas}></Card>
         )
         :
         (

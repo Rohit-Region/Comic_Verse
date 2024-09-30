@@ -6,10 +6,11 @@ const Header = () => {
     return (
     <div className='main'>
         <h2>WORLD OF COMICS</h2>
-        <nav>
-            <li onClick={()=>Navigate('/')}>Home</li>
-            <li onClick={()=>Navigate('/about')}>ABOUT</li>
-        </nav>
+        {/* <div>
+            <button onClick={()=>Navigate('/')}>Home</button>
+            <button onClick={()=>Navigate('/about')}>ABOUT</button>
+
+        </div> */}
     </div>
   )
 }
