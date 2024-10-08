@@ -1,0 +1,55 @@
+/* .container{
+    justify-content: center;
+    align-items: center;
+} */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Center text alignment */
+}
+
+.inside{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+
+
+.inside input{
+    height: 20px;
+    margin-top: 12px;
+    padding: 3px;
+}
+/* .setup{
+    display: flex;
+    flex-direction:column;
+} */
+
+.setup input{
+    width: 100px;
+}
+
+.setup button{
+   
+    height: 40px;
+    width: 70px;
+    background-color: blue;
+
+}
+
+table {
+    border: 2px solid #000;
+  }
+
+  th{
+    border: 2px solid #000;
+  }
+
+  td{
+    border: 2px solid #000;
+  }
+
+ 

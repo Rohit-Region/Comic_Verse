@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.css'; // You can customize the styles here
 import sam2 from './../../../assets/sam2.jpg';
+import sam3 from './../../../assets/sam3.jpeg';
+import sam4 from './../../../assets/sam4.jpg';
 const Carousel = () => {
   // Array of images (or content) for the carousel
   const images = [
     sam2,
-    'https://via.placeholder.com/600x300/33FF57/ffffff?text=Slide+2',
-    'https://via.placeholder.com/600x300/3357FF/ffffff?text=Slide+3'
+    sam3,
+    sam4
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0); // Track the current slide

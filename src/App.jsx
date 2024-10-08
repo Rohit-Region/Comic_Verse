@@ -11,9 +11,13 @@ import Header from './components/header/Header'
 import Layout from './components/header/layout'
 import Comic_page from './components/Pages/comic_page/comic_page'
 import Voice from './components/Pages/Ai/Voice'
+import Create_comic from './components/Pages/Create_Comic/Create_comic'
+import { Provider } from 'react-redux'
+import { store } from './store'
 function App() {
 
   return (
+    <Provider store={store}>
     <BrowserRouter> 
     <Layout/>
         <Routes>
@@ -23,8 +27,10 @@ function App() {
           <Route path='/card' element={<Card/>}></Route>
           <Route path='/comic_page' element={<Comic_page/>}></Route>
           <Route path='/voice' element={<Voice/>}></Route>
+          <Route path='/Create_comic' element={<Create_comic/>}></Route>
         </Routes>
     </BrowserRouter>
+    </Provider>
   )
 }
 
