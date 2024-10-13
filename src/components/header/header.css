@@ -1,8 +1,29 @@
-.main{
+.main {
     position: fixed;
-    height: '5px';
-    background-color: aqua;
+    height: 75px;
+    background-color: rgb(255, 121, 5);
     top: 0;
-    left:0;
+    left: 0;
     width: 100%;
+    display: flex;
+    justify-content: center; /* Center the heading */
+    align-items: center; /* Vertically center items */
+    padding: 0 20px; /* Add padding if necessary */
+}
+
+.heading {
+    color: rgb(3, 1, 1);
+    font-size: 24px;
+}
+
+.button {
+    position: absolute;
+    right: 20px; /* Push the button to the end with some padding */
+    background-color: beige;
+    width: 100px; /* Adjust the width as needed */
+    height: 30px;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer; /* Adds a pointer on hover */
+    margin-right: 30px;
 }

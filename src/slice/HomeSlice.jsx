@@ -5,7 +5,7 @@ export const HomieDetails = createAsyncThunk(
     async (thunkAPI)=>{
        try{ 
         const response = await axios.get(`http://localhost:3002/api/comics/comics`)
-        console.log("response",response);
+        //console.log("response",response);
         return response.data;
         }catch(e){
             console.error("Error Fetching Comic Data : ",e);

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -9,28 +9,53 @@ import Lenis from './components/Pages/lenis/Lenis'
 import  Card  from './components/Pages/card/Card'
 import Header from './components/header/Header'
 import Layout from './components/header/layout'
-import Comic_page from './components/Pages/comic_page/comic_page'
+import ComicPage from './components/Pages/comic_page/ComicPage'
 import Voice from './components/Pages/Ai/Voice'
-import Create_comic from './components/Pages/Create_Comic/Create_comic'
-import { Provider } from 'react-redux'
-import { store } from './store'
+import CreateComic from './components/Pages/Create_Comic/Create_comic'
+import { useDispatch,useSelector } from 'react-redux'
+import Login from './components/login/Login'
+
+
 function App() {
+  const dispatch=useDispatch()
+  const { LoginData,isLoggedIn,loading ,error  } = useSelector((state) => state.login);
+
+  useEffect(()=>{
+    setIsloggedIn(isLoggedIn)
+  },[LoginData])
+  useEffect(() => {
+    const storedData = localStorage.getItem('LoginData');
+    if (storedData) {
+        setIsloggedIn(true); // User is logged in
+    } else {
+        setIsloggedIn(false); // User is not logged in
+    }
+}, []);
+const [isloggedIn,setIsloggedIn]= useState(false);
+
 
   return (
-    <Provider store={store}>
-    <BrowserRouter> 
-    <Layout/>
-        <Routes>
-          <Route path='/' element={<Home/>}></Route>
-          <Route path='/about' element={<About></About>}></Route>
-          <Route path='/lenis' element={<Lenis/>}></Route>
-          <Route path='/card' element={<Card/>}></Route>
-          <Route path='/comic_page' element={<Comic_page/>}></Route>
-          <Route path='/voice' element={<Voice/>}></Route>
-          <Route path='/Create_comic' element={<Create_comic/>}></Route>
-        </Routes>
+    <BrowserRouter>
+      <Routes>
+        {/* Public Routes */}
+        {!isloggedIn && (
+          <Route path='/' element={<Login />} />
+        )}
+
+        {/* Protected Routes */}
+        {isloggedIn && (
+          <Route element={<Layout />}>
+            <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/lenis' element={<Lenis />} />
+            <Route path='/card' element={<Card />} />
+            <Route path='/comic_page/:comic_id' element={<ComicPage />} />
+            <Route path='/voice' element={<Voice />} />
+            <Route path='/create_comic' element={<CreateComic />} />
+          </Route>
+        )}
+      </Routes>
     </BrowserRouter>
-    </Provider>
   )
 }
 

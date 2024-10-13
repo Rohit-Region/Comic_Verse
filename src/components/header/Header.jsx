@@ -5,11 +5,11 @@ const Header = () => {
     const  Navigate=useNavigate()
     return (
     <div className='main'>
-        <h2>WORLD OF COMICS</h2>
+        <h2 className='heading'>WORLD OF COMICS</h2>
+        <div className='button' onClick={()=>Navigate('/')}>LOGIN </div>
         {/* <div>
             <button onClick={()=>Navigate('/')}>Home</button>
             <button onClick={()=>Navigate('/about')}>ABOUT</button>
-
         </div> */}
     </div>
   )

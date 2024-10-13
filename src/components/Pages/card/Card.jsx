@@ -3,7 +3,6 @@ import sam2 from './../../../assets/sam2.jpg';
 import './Card.css'
 import { useNavigate } from 'react-router-dom';
 
-
 const Card = () => {
    
   const navigate = useNavigate()
@@ -11,7 +10,7 @@ const Card = () => {
   return (
     <div className="parent" onClick={()=>(navigate('./comic_page'))}>
       <div className="child">
-        <img src={sam2} alt="Sample" /> {/* Use <img> tag and add alt attribute for accessibility */}
+        <img src={sam2} alt="Sample" /> 
       </div>
       <div>
         Name

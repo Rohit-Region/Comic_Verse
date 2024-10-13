@@ -5,10 +5,9 @@ import { useSelector } from 'react-redux'
 import { HomieDetails } from '../../../slice/HomeSlice'
 import { useNavigate } from 'react-router-dom'
 import Card from './Cards'
-const Cards = () => {
+const MostReaded = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const [data,setData]=useState(1)
     const {HomeData,image,loading,error}=useSelector((state)=>state.home)
     useEffect(() => {
         dispatch(HomieDetails());
@@ -28,7 +27,7 @@ const Cards = () => {
     return (
 <div>
 <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-    <h2>RECENTLY ADDED COMICS:</h2>
+    <h2>MOST WATCHED COMICS :</h2>
   </div>
 <div style={{display:'flex',flexDirection:'row',gap:'20px'}}>
  
@@ -54,4 +53,4 @@ const Cards = () => {
   )
 }
 
-export default Cards
+export default MostReaded
