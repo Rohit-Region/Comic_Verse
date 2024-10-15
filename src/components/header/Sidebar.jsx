@@ -14,10 +14,11 @@ const Sidebar = () => {
       {/* Sidebar */}
       <div className={`sidebar ${action ? 'active' : ''}`}>
         <ul>
-          <li onClick={()=>Navigate('/home')} style={{color:"white"}}>Home</li>
+          <li onClick={()=>Navigate('/')} style={{color:"white"}}>Home</li>
           <li onClick={()=>Navigate('/about')} style={{color:"white"}}>About</li>
-          <li><a href="#services">Services</a></li>
+          <li onClick={()=>Navigate('/profile')} style={{color:"white"}}>profile</li>
           <li onClick={()=>Navigate('/Create_comic')} style={{color:"white"}}>ComicAnthem</li>
+          <li onClick={()=>Navigate('/SignUp')} style={{color:"white"}}>SignUp</li>
         </ul>
       </div>
     </div>

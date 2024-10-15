@@ -20,7 +20,19 @@
     position: absolute;
     right: 20px; /* Push the button to the end with some padding */
     background-color: beige;
-    width: 100px; /* Adjust the width as needed */
+    width: 60px; /* Adjust the width as needed */
+    height: 30px;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer; /* Adds a pointer on hover */
+    margin-right: 100px;
+}
+
+.button2 {
+    position: absolute;
+    right: 20px; /* Push the button to the end with some padding */
+    background-color: beige;
+    width: 60px; /* Adjust the width as needed */
     height: 30px;
     border-radius: 10px;
     padding: 5px;

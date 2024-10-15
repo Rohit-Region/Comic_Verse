@@ -14,7 +14,8 @@ import Voice from './components/Pages/Ai/Voice'
 import CreateComic from './components/Pages/Create_Comic/Create_comic'
 import { useDispatch,useSelector } from 'react-redux'
 import Login from './components/login/Login'
-
+import SignUp from './components/login/SignUp'
+import Profile from './components/Pages/profile/Profile'
 
 function App() {
   const dispatch=useDispatch()
@@ -39,7 +40,10 @@ const [isloggedIn,setIsloggedIn]= useState(false);
       <Routes>
         {/* Public Routes */}
         {!isloggedIn && (
+          <Route>
           <Route path='/' element={<Login />} />
+          <Route path='/SignUp' element={<SignUp/>}/>
+          </Route>
         )}
 
         {/* Protected Routes */}
@@ -49,9 +53,11 @@ const [isloggedIn,setIsloggedIn]= useState(false);
             <Route path='/about' element={<About />} />
             <Route path='/lenis' element={<Lenis />} />
             <Route path='/card' element={<Card />} />
-            <Route path='/comic_page/:comic_id' element={<ComicPage />} />
+            <Route path='/comic_page/:comicId' element={<ComicPage />} />
             <Route path='/voice' element={<Voice />} />
             <Route path='/create_comic' element={<CreateComic />} />
+            <Route path='/profile' element={<Profile/>} />
+            <Route path='/SignUp' element={<SignUp/>}/>
           </Route>
         )}
       </Routes>

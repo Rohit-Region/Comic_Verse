@@ -7,7 +7,7 @@ export const LoginDetails = createAsyncThunk(
     async(loginData,thunkAPI)=>{
         try{
             const response = await axios.post(`http://localhost:3002/api/login`,loginData)
-            // console.log("response",response);
+            console.log("response",response);
             return response.data;
         }
         catch(e){
@@ -16,6 +16,23 @@ export const LoginDetails = createAsyncThunk(
         }
     }
 )
+
+// SignUp API action
+export const SignUpDetails = createAsyncThunk(
+    'user/SignUp',
+    async (signUpData, thunkAPI) => {
+        try {
+            const response = await axios.post(`http://localhost:3002/api/users`, signUpData);
+            console.log("ASADAD",response)
+            return response.data;
+        } catch (e) {
+            console.error("Error signing up:", e);
+            return thunkAPI.rejectWithValue('Failed to Sign Up');
+        }
+    }
+);
+
+
 
 const LoginSlice = createSlice({
     name:"UserBook",
@@ -50,6 +67,19 @@ const LoginSlice = createSlice({
             state.loading=false;
             state.error=action.payload;
         })
+        .addCase(SignUpDetails.pending, (state) => {
+            state.loading = true;
+        })
+        .addCase(SignUpDetails.fulfilled, (state, action) => {
+            state.loading = false;
+            state.isLoggedIn = action.payload.isLoggedIn;
+            state.LoginData = action.payload; // Store the sign-up response (like token, user info)
+            localStorage.setItem('LoginData', JSON.stringify(action.payload)); // Save to localStorage
+        })
+        .addCase(SignUpDetails.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        });
     }
 })
 

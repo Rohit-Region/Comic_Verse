@@ -62,6 +62,7 @@ body {
   border: none;
   outline: none;
   background: transparent;
+
 }
 
 /* rememberMeStyle */
@@ -197,13 +198,15 @@ body {
   }
 
   .password-toggle-btn {
-      width: 25px;
+      width: 45px;
       margin-left: 17.5rem;
       transform: translateY(-135%);
-  }
+  
+   }
 
   .sign-in-button {
       font-size: 0.75rem; /* Updated to rem */
+      margin-top: -100px;
   }
 
   .privacy, .forget-pass {

@@ -1,0 +1,49 @@
+/* Profile.css */
+
+.profile-container {
+    height: auto; /* Adjust to content */
+    width: 1000px; /* Set width for the profile box */
+    border: 2px solid black; /* Black border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Space inside the box */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 20px auto; /* Center the container */
+}
+
+.profile-header {
+    display: flex; /* Flexbox for header alignment */
+    justify-content: space-between; /* Space between elements */
+    align-items: center; /* Center vertically */
+}
+
+.profile-header h2 {
+    margin: 0; /* Remove default margin */
+    font-size: 1.5rem; /* Larger font size */
+}
+
+.author-button {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.author-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.profile-info {
+    margin-top: 15px; /* Space above the info */
+    font-size: 1.1rem; /* Slightly larger font */
+}
+.label {
+    text-align: start;
+    margin-left: 2rem; /* Changed from vw for better scaling */
+    font-size: 0.75rem; /* Updated for rem units */
+    color: rgb(6, 0, 0);
+  }
+  

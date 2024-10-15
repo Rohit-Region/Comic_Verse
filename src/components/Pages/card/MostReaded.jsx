@@ -1,5 +1,4 @@
 import React, { createContext, useState,useEffect } from 'react'
-import { addComics } from '../../../slice/ComicSlice'
 import {useDispatch} from 'react-redux'
 import { useSelector } from 'react-redux'
 import { HomieDetails } from '../../../slice/HomeSlice'
@@ -33,7 +32,7 @@ const MostReaded = () => {
  
     {HomeData && HomeData.length > 0 ? (
       HomeData.map((comic, index) => (
-        <div style={{backgroundColor:'purple',borderRadius:'10px',}} key={index} onClick={() => navigate(`./comic_page/${comic.comic_id}`)}>
+        <div style={{backgroundColor:'purple',borderRadius:'10px',}} key={index} onClick={() => navigate(`./comic_page/${comic.comicId}`)}>
           <div>
             <img
               src={`${baseURL}${comic.image.path}`} // Concatenating base URL with the image path

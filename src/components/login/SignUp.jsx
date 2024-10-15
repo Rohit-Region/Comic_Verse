@@ -24,8 +24,8 @@ import {
 
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { LoginDetails } from "../../slice/LoginSlice.jsx";
-const Login = () => {
+import { LoginDetails, SignUpDetails } from "../../slice/LoginSlice.jsx";
+const SignUp = () => {
     const dispatch=useDispatch()
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ const Login = () => {
   useEffect(() => {
     const storedCredentials = localStorage.getItem("loginCredentials");
     if (storedCredentials && rememberMe) {
-      const { email, password } = JSON.parse(storedCredentials);
+      const { userName,email,password,phoneNumber } = JSON.parse(storedCredentials);
       formik.setFieldValue("email", email);
       formik.setFieldValue("password", password);
     }
@@ -61,20 +61,20 @@ const Login = () => {
   }
 
   const formik = useFormik({
-    initialValues: { email: "", password: "" },
+    initialValues: { name:"",email: "",phoneNumber:"", password: "" },
     validationSchema: Yup.object({
       email: Yup.string().email("*Please enter a valid email ID").required("Enter an email"),
       password: Yup.string().required("Required").min(6, "Password must be at least 6 characters"),
     }),
     onSubmit: async (values) => {
       console.log('Form values:', values);
-      var loginData = { email: values.email, password: values.password };
+      var loginData = { name:values.name,email: values.email,phoneNumber:values.phoneNumber, password: values.password };
       setIsSubmitting(true);
       try {
-        console.log('Dispatching LoginDetails...');
-        const result = await dispatch(LoginDetails(loginData)); // Dispatch login action
+        console.log('Dispatching LoginDetails...',loginData);
+        const result = await dispatch(SignUpDetails(loginData)); // Dispatch login action
         console.log('Login successful:', result);
-        navigate('/');
+        // navigate('/');
       } catch (error) {
         console.error('Login error:', error);
       } finally {
@@ -97,7 +97,7 @@ const Login = () => {
     top: 0,                         // Aligns to the top of the viewport
     left: 0                         // Aligns to the left of the viewport
   };
-  
+
   const handleForgotOpen = () => {
     setOpenForgot(true);
   };
@@ -176,7 +176,7 @@ const Login = () => {
                  <motion.div
                     style={{width:'20px'}}
                    initial={{ opacity: 0, scale: 0.1, rotate: 0 }}
-                   animate={{ opacity: 1, scale: 1, rotate: 0 ,x:500}}
+                   animate={{ opacity: 1, scale: 1, rotate: 0 ,x:500,y:-30}}
                    exit={{ opacity: 0, y: 0.1, rotate: 0 }}
                    transition={{ duration: 2 }}
                  >
@@ -191,18 +191,33 @@ const Login = () => {
       
         <div className="login-container">
           <div>
-            <h2 className="heading">Sign In</h2>
+            <h2 className="heading">Sign Up</h2>
             <h5 className="heading2">
               {" "}
               No account?
               <span>
-                <a className="heading3"  onClick={()=>navigate('./signup')}>
-                  Sign Up
+                <a className="heading3" onClick={()=>navigate('/')}>
+                  Sign In
                 </a>
               </span>{" "}
             </h5>
             <form onSubmit={formik.handleSubmit}>
-              <label className="label">Email or User name</label>
+              <label className="label">User Name</label>
+              <br />
+              <input
+                type="text"
+                placeholder="User Name"
+                name="name"
+                value={formik.values.name}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className="input"
+              />
+              {formik.touched.name && formik.errors.name && (
+                <div className="errorText">{formik.errors.name}</div>
+              )}
+              <br />
+              <label className="label">Email</label>
               <br />
               <input
                 type="text"
@@ -217,19 +232,37 @@ const Login = () => {
                 <div className="errorText">{formik.errors.email}</div>
               )}
               <br />
-
-              <label className="label">Password</label>
+              <label className="label">phone Number</label>
               <br />
               <div className="password-input-container">
                 <input
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  placeholder="Must be at least 6 Characters"
+                 // type={showPassword ? "text" : "password"}
+                 type="number" 
+                 name="phoneNumber"
+                  placeholder="phoneNumber"
                   onBlur={formik.handleBlur}
-                  value={formik.values.password}
+                  value={formik.values.phoneNumber}
                   onChange={formik.handleChange}
                   className="input"
                 />
+                  {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+                <div className="errorText">{formik.errors.phoneNumber}</div>
+              )}
+              <br />
+            <label className="label">PassWord</label>
+              <br />
+              <input
+                type="text"
+                placeholder="PassWord"
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className="input"
+              />
+              {formik.touched.password && formik.errors.password && (
+                <div className="errorText">{formik.errors.password}</div>
+              )}
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
@@ -238,22 +271,11 @@ const Login = () => {
                   <img
                     src={showPassword ? hide : show}
                     alt={showPassword ? "Hide" : "Show"}
-                    style={{ width: "20px", height: "20px" }}
+                    style={{ width: "20px", height: "20px",marginTop:"20p" }}
                   />
                 </button>
               </div>
-       
-              <br />
-              <div className="remember-me">
-                <input
-                  type="checkbox"
-                  name="rememberMe"
-                  checked={rememberMe}
-                  onChange={() => setRememberMe(!rememberMe)}
-                />
-                <label style={{ marginLeft: "1%" }}>Remember Me</label>
-              </div>
-              <br />
+              {/* <br /> */}
               <button
                 type="submit"
                 className="sign-in-button"
@@ -284,10 +306,10 @@ const Login = () => {
               <span style={{ color: "#ff7300" }}>Terms of Service</span>
             </div>
             <br />
-            <div className="forget-pass">
-              <span style={{ color: "#83A8FF", cursor: "pointer" }} onClick={handleForgotOpen}>Forgot Password?</span>
+            {/* <div className="forget-pass">
+              <span style={{ color: "#83A8FF", cursor: "pointer" }} onClick={handleForgotOpen}>Forgot Password?</span> */}
               {/* <span style={{ color: "#83A8FF",cursor:"pointer" }} onClick={handleChangePass}>Reset Password</span> */}
-            </div>
+            {/* </div> */}
           </div>
         </div>
         
@@ -440,4 +462,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import "./Create_comic.css";
 import axios from 'axios';
-
+import { useSelector } from 'react-redux';
 const Create_comic = () => {
+    const {LoginData}=useSelector((state)=>state.login);
+    console.log("LoginData : ",LoginData)
     const [pdfFile, setPdfFile] = useState(null);
     const [pdfName, setPdfName] = useState(null);
     const [image, setImage] = useState(null);
@@ -10,7 +12,6 @@ const Create_comic = () => {
     const [imageView, setImageView] = useState(false);
     const [pdfView, setPdfView] = useState(false);
     const [userData, setUserData] = useState({
-        comic_id: "",
         comic_name: "",
         genre: "",
         episodes: "",
@@ -55,10 +56,9 @@ const Create_comic = () => {
 
     const onSubmit = () => {
         const formData = new FormData();
-
-        // Append user data to FormData
-        formData.append("comic_id", userData.comic_id);
         formData.append("comic_name", userData.comic_name);
+        formData.append("author_name", LoginData.name);
+        formData.append("authorID", LoginData.userId);
         formData.append("genre", userData.genre);
         formData.append("description", userData.description);
         formData.append("episodes", userData.episodes);
@@ -82,7 +82,7 @@ const Create_comic = () => {
                 console.log("Response:", res);
                 alert("uploaded");
                 setUserData({
-                    comic_id: "",
+                  
                     comic_name: "",
                     genre: "",
                     episodes: "",
@@ -166,7 +166,6 @@ const Create_comic = () => {
             <h1>ADD YOUR COMIC'S</h1>
 
             <div>
-                <div className='inside'><p>COMIC ID:</p><input type='number' name='comic_id' placeholder='ID' value={userData.comic_id} onChange={handleChange} /></div>
                 <div className='inside'><p>COMIC NAME:</p><input type='text' name='comic_name' placeholder='Name' value={userData.comic_name} onChange={handleChange} /></div>
                 <div className='inside'><p>GENRE:</p><input type='text' name='genre' placeholder='Genre' value={userData.genre} onChange={handleChange}></input></div>
                 <div className='inside'><p>EPISODES:</p><input type='number' name='episodes' placeholder='Episodes' value={userData.episodes} onChange={handleChange}></input></div>

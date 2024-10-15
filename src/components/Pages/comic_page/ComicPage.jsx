@@ -2,16 +2,37 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchComicDetails } from '../../../slice/booksSlice';
 import { useParams } from 'react-router-dom';
-
+import { comicDetails, likeComic, addComment, purchaseComic } from '../../../slice/ComicSlice';
 const ComicPage = () => {
-  const { comic_id } = useParams();
+  const { comicId } = useParams();
   const dispatch = useDispatch();
+  const { LoginData  } = useSelector((state) => state.login);
   const { bookData, image, pdf, loading, error } = useSelector((state) => state.books);
+  console.log("LoginData :  ",LoginData)
   const [view, setView] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchComicDetails(comic_id));
-  }, [dispatch, comic_id]);
+    dispatch(fetchComicDetails(comicId));
+  }, [dispatch, comicId]);
+
+  const { comic, loadings, errors } = useSelector((state) => state.comics);
+
+  const handleLike = () => {
+    dispatch(likeComic(comicId));
+  };
+
+const handleComment = (comment) => {
+  const userId= LoginData.userId
+  const name = LoginData.name
+
+  dispatch(addComment({ comicId,userId, name , comment }))
+
+};
+
+
+  const handlePurchase = () => {
+    dispatch(purchaseComic(comicId));
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -97,13 +118,18 @@ const ComicPage = () => {
           />
         </div>
         <div style={{ maxWidth: '600px' }}>
-          <p style={{ margin: '0 0 10px', fontSize: '24px', fontWeight: 'bold' }}>{bookData.name}</p>
+          <p style={{ margin: '0 0 10px', fontSize: '24px', fontWeight: 'bold' }}>{bookData.name}{bookData.comicId}</p>
           <p style={{ margin: '0 0 10px', fontSize: '18px', color: '#555' }}>Rating: <strong>{bookData.rating}</strong></p>
           <p style={{ margin: '0 0 10px', fontSize: '18px', color: '#555' }}>Genre: <strong>{bookData.genre}</strong></p>
           <p style={{ margin: '0 0 10px', fontSize: '18px', color: '#555' }}>Episodes: <strong>{bookData.episodes}</strong></p>
           <p style={{ margin: '0 0 10px', fontSize: '18px', color: '#555' }}>Description: <strong>{bookData.description}</strong></p>
         </div>
       </div>
+
+      <button onClick={handleLike}>Like</button>
+      <button onClick={() => handleComment('Great comic!')}>Add Comment</button>
+      <button onClick={handlePurchase}>Purchase</button>
+
 
       <button onClick={() => setView(true)}>View</button>
 
