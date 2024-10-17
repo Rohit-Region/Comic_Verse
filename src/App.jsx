@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import {Routes,Route,BrowserRouter,Navigate} from 'react-router-dom'
 import Home from './components/Pages/Home'
-import About from './components/Pages/About'
+import Author from './components/Pages/Author'
 import Lenis from './components/Pages/lenis/Lenis'
 import  Card  from './components/Pages/card/Card'
 import Header from './components/header/Header'
@@ -50,7 +50,7 @@ const [isloggedIn,setIsloggedIn]= useState(false);
         {isloggedIn && (
           <Route element={<Layout />}>
             <Route path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
+            <Route path='/author' element={<Author />} />
             <Route path='/lenis' element={<Lenis />} />
             <Route path='/card' element={<Card />} />
             <Route path='/comic_page/:comicId' element={<ComicPage />} />

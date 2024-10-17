@@ -8,7 +8,9 @@ import { useDispatch,useSelector } from 'react-redux'
 
 function Home() {
   const { LoginData,userId, name,role, phoneNumber,isLoggedIn,loading ,error  } = useSelector((state) => state.login);
-  console.log("ASDA",LoginData,name,userId, role, phoneNumber,)
+  useEffect(() => {
+    console.log("ASDA", LoginData, name, userId, role, phoneNumber);
+  }, [LoginData, name, userId, role, phoneNumber]); 
   return (
     <div>
 
