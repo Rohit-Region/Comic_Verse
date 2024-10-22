@@ -6,9 +6,9 @@ export const authorDetails = createAsyncThunk(
     async (authorID,thunkAPI)=>{
         try{
             console.log("ASKME")
-            console.log("Author ID :",authorID)
+            console.log("Author ID")
             const response = await axios.get(`http://localhost:3002/api/authorbooks/${authorID}`);
-            console.log("Response : ",response.data)
+            console.log("Response : ",response)
             return response.data;
         }
         catch(e){

@@ -16,6 +16,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import Login from './components/login/Login'
 import SignUp from './components/login/SignUp'
 import Profile from './components/Pages/profile/Profile'
+import Comic_Create from './components/Pages/Create_Author_Comic/Comic_Create'
 
 function App() {
   const dispatch=useDispatch()
@@ -57,7 +58,7 @@ const [isloggedIn,setIsloggedIn]= useState(false);
             <Route path='/voice' element={<Voice />} />
             <Route path='/create_comic' element={<CreateComic />} />
             <Route path='/profile' element={<Profile/>} />
-            <Route path='/SignUp' element={<SignUp/>}/>
+            <Route path='/comic_path' element={<Comic_Create/>}/>
           </Route>
         )}
       </Routes>

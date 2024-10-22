@@ -18,7 +18,7 @@ const Sidebar = () => {
           <li onClick={()=>Navigate('/author')} style={{color:"white"}}>Author</li>
           <li onClick={()=>Navigate('/profile')} style={{color:"white"}}>profile</li>
           <li onClick={()=>Navigate('/Create_comic')} style={{color:"white"}}>ComicAnthem</li>
-          <li onClick={()=>Navigate('/SignUp')} style={{color:"white"}}>SignUp</li>
+          <li onClick={()=>Navigate('/comic_path')} style={{color:"white"}}>CREATE COMICS</li>
         </ul>
       </div>
     </div>

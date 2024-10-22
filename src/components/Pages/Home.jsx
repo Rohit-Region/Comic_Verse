@@ -7,10 +7,10 @@ import MostReaded from './card/MostReaded.jsx'
 import { useDispatch,useSelector } from 'react-redux'
 
 function Home() {
-  const { LoginData,userId, name,role, phoneNumber,isLoggedIn,loading ,error  } = useSelector((state) => state.login);
+  const { LoginData  } = useSelector((state) => state.login);
   useEffect(() => {
-    console.log("ASDA", LoginData, name, userId, role, phoneNumber);
-  }, [LoginData, name, userId, role, phoneNumber]); 
+    console.log("ASDA", LoginData);
+  }, [LoginData]); 
   return (
     <div>
 
