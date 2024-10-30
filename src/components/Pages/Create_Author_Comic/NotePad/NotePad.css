@@ -1,0 +1,21 @@
+.document-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .page {
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    height: 300px; /* Page height approximation */
+    overflow: hidden;
+  }
+  
+  .page:not(:last-child) {
+    page-break-after: always;
+  }
+  

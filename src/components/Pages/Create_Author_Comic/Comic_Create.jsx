@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import Notepad from './Notepad';
+import Notepad from './NotePad/Notepad';
 import Painter from './Paint/PaintMain';
 import MangaMain from './Manga/MangaMain';
 import AddingMain from './AddingPad/AddingMain';
